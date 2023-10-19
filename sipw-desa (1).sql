@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2023 at 03:19 AM
+-- Generation Time: Oct 19, 2023 at 05:21 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -110,10 +110,9 @@ CREATE TABLE `surat_skd` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jk` tinyint(1) NOT NULL,
+  `jk` enum('Laki-laki','Perempuan') COLLATE utf8mb4_unicode_ci NOT NULL,
   `tempatlahir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tanggallahir` date NOT NULL,
-  `kewarganegaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `agama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pekerjaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -123,6 +122,13 @@ CREATE TABLE `surat_skd` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `surat_skd`
+--
+
+INSERT INTO `surat_skd` (`id`, `user_id`, `name`, `nik`, `jk`, `tempatlahir`, `tanggallahir`, `agama`, `pekerjaan`, `alamat`, `keterangan`, `status`, `file`, `created_at`, `updated_at`) VALUES
+(1, 7, 'Dyffa', '9999999999999999', 'Perempuan', 'Madiun', '2001-10-20', 'Islam', 'Teller', 'Jl Gajah Mada Madiun', 'test', 'Diterima', NULL, '2023-10-18 16:36:24', '2023-10-18 16:44:26');
 
 -- --------------------------------------------------------
 
@@ -135,10 +141,9 @@ CREATE TABLE `surat_skpp` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jk` tinyint(1) NOT NULL,
+  `jk` enum('Laki-laki','Perempuan') COLLATE utf8mb4_unicode_ci NOT NULL,
   `tempatlahir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tanggallahir` date NOT NULL,
-  `kewarganegaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `agama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pekerjaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `statuspernikahan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -153,6 +158,13 @@ CREATE TABLE `surat_skpp` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `surat_skpp`
+--
+
+INSERT INTO `surat_skpp` (`id`, `user_id`, `name`, `nik`, `jk`, `tempatlahir`, `tanggallahir`, `agama`, `pekerjaan`, `statuspernikahan`, `alamatasal`, `alamat_pindah_kelurahan`, `alamat_pindah_kecamatan`, `alamat_pindah_kabupaten`, `alamat_pindah_provinsi`, `status`, `file`, `created_at`, `updated_at`) VALUES
+(1, 7, 'Dyffa', '9999999999999999', 'Perempuan', 'Madiun', '2001-10-20', 'Islam', 'Teller', 'Belum Menikah', 'Jl Gajah Mada Madiun', 'Demangan', 'Siman', 'Ponorogo', 'Jawa Timur', 'Diterima', NULL, '2023-10-18 16:40:52', '2023-10-18 16:44:37');
+
 -- --------------------------------------------------------
 
 --
@@ -164,10 +176,9 @@ CREATE TABLE `surat_sktm` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nik` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jk` tinyint(1) NOT NULL,
+  `jk` enum('Laki-laki','Perempuan') COLLATE utf8mb4_unicode_ci NOT NULL,
   `tempatlahir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tanggallahir` date NOT NULL,
-  `kewarganegaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `agama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pekerjaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `statuspernikahan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -178,6 +189,16 @@ CREATE TABLE `surat_sktm` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `surat_sktm`
+--
+
+INSERT INTO `surat_sktm` (`id`, `user_id`, `name`, `nik`, `jk`, `tempatlahir`, `tanggallahir`, `agama`, `pekerjaan`, `statuspernikahan`, `alamat`, `keterangan`, `status`, `file`, `created_at`, `updated_at`) VALUES
+(1, 5, 'Si Anjay', '1234123412341234', 'Perempuan', 'Magetan', '2001-12-21', 'Islam', 'Mahasiswi', 'Menikah', 'Jl raya pulung kodepos63472', 'test', 'Diterima', NULL, '2023-10-18 15:40:04', '2023-10-18 15:40:18'),
+(2, 5, 'Si Anjay', '1234123412341234', 'Perempuan', 'Magetan', '2001-12-21', 'Islam', 'Mahasiswi', 'Menikah', 'Jl raya pulung kodepos63472', 'test', 'Ditolak', NULL, '2023-10-18 15:48:40', '2023-10-18 16:36:11'),
+(3, 1, 'Wahyu Saputra', '1234567891234567', 'Laki-laki', 'Ponorogo', '2001-02-20', 'Islam', 'Mahasiswa', 'Menikah', 'Jl.Margo Utomo no.17 Demangan siman Ponorogo', 'test', 'Ditolak', NULL, '2023-10-18 15:51:10', '2023-10-18 16:36:08'),
+(4, 7, 'Dyffa', '9999999999999999', 'Perempuan', 'Madiun', '2001-10-20', 'Islam', 'Teller', 'Belum Menikah', 'Jl Gajah Mada Madiun', 'test', 'Diterima', NULL, '2023-10-18 16:11:11', '2023-10-18 16:36:05');
 
 -- --------------------------------------------------------
 
@@ -215,8 +236,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `username`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `agama`, `pekerjaan`, `status_pernikahan`, `alamat`, `dukuh`, `rt`, `rw`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Wahyu Saputra', '350267637637', '', '', NULL, '', '', '', '', '', 0, 0, '', NULL, '$2y$10$Iqz4tlvtzv4/fBjDUllYLO/j5T3k50MPTna31CWuY4AAf81ygXvBC', 'User', NULL, '2023-10-13 16:21:46', '2023-10-13 16:21:46'),
 (4, 'Admin', '123456789', 'Laki-laki', 'Ponorogo', '2001-10-15', 'Islam', 'Mahasiswa', 'Menikah', 'Jl.Margo Utomo', '', 0, 0, 'admin@gmail.com', NULL, '$2y$10$a//grDMbmCvLDhUyvbsXeOqSOZESQ8jJw.If.IE9yHoZ/KYUd.g6e', 'Admin', NULL, '2023-10-14 11:14:21', '2023-10-14 11:14:21'),
-(5, 'Si Anjay', '1234123412341234', 'Perempuan', 'Magetan', '2001-12-21', 'Islam', 'Mahasiswi', 'Menikah', 'Jl raya pulung kodepos63472', 'Purworejo', 1, 1, 'wahyukekae@gmail.com', NULL, '$2y$10$3ZKrf/7XrcGHS8Mm9k9Gv.L3Eo5CyJQGHYvBnUKP433re.xMW3kF6', 'User', 'oGOr5D3w9YYTnqTNz04yC1moe8DtHHv3s0lA7QFmOcCmjorC5xirUh26m6Bj', '2023-10-15 21:10:19', '2023-10-16 18:09:54'),
-(6, 'John Doe Doe', '1234567812345678', 'Laki-laki', 'ponorogo', '2001-12-12', 'islam', 'adfadfaf', 'Belum Menikah', 'Jl. Lorem Ipsum, No. 14', 'Krajan', 1, 1, 'bayusap80@gmail.com', NULL, '$2y$10$4DgGaqaIaKwR6fOseZHo9ORKoFxswyOxm4dmlNymHCznbGFnsNUDu', 'User', 'dV2Zz2feRPfdv6YuMvSOA0VZ3s4xe3NqloP63JhRFL84zBPChxmaW63ku3mH', '2023-10-16 00:10:43', '2023-10-16 00:50:06');
+(5, 'Si Anjay', '1234123412341234', 'Perempuan', 'Magetan', '2001-12-21', 'Islam', 'Mahasiswi', 'Menikah', 'Jl raya pulung kodepos63472', 'Purworejo', 1, 1, 'wahyukekae@gmail.com', NULL, '$2y$10$3ZKrf/7XrcGHS8Mm9k9Gv.L3Eo5CyJQGHYvBnUKP433re.xMW3kF6', 'RT', '7os0dqrkhxYwkvzYJjNGb5FEcUroImaJ9N0bFbeksFrqHXJHwgK0GK8Kto9f', '2023-10-15 21:10:19', '2023-10-16 18:09:54'),
+(6, 'John Doe Doe', '1234567812345678', 'Laki-laki', 'ponorogo', '2001-12-12', 'islam', 'adfadfaf', 'Belum Menikah', 'Jl. Lorem Ipsum, No. 14', 'Krajan', 1, 1, 'bayusap80@gmail.com', NULL, '$2y$10$4DgGaqaIaKwR6fOseZHo9ORKoFxswyOxm4dmlNymHCznbGFnsNUDu', 'User', 'dV2Zz2feRPfdv6YuMvSOA0VZ3s4xe3NqloP63JhRFL84zBPChxmaW63ku3mH', '2023-10-16 00:10:43', '2023-10-16 00:50:06'),
+(7, 'Dyffa', '9999999999999999', 'Perempuan', 'Madiun', '2001-10-20', 'Islam', 'Teller', 'Belum Menikah', 'Jl Gajah Mada Madiun', 'Winongo', 1, 2, 'dyffa@gmail.com', NULL, '$2y$10$1gCUf7KWFqCBEG9a0X.OkeYzr8xPbS9eMV50WzgOx7saq2bNsubBi', 'Admin', NULL, '2023-10-18 16:08:37', '2023-10-18 16:08:37');
 
 --
 -- Indexes for dumped tables
@@ -303,25 +325,25 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `surat_skd`
 --
 ALTER TABLE `surat_skd`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `surat_skpp`
 --
 ALTER TABLE `surat_skpp`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `surat_sktm`
 --
 ALTER TABLE `surat_sktm`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
