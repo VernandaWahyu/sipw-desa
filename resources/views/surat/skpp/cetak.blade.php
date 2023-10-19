@@ -80,36 +80,30 @@ $tabel->easyCell($id->agama, 'valign:T;');
 $tabel->printRow();
 
 $tabel->easyCell("7.", 'align:R;'); 
-$tabel->easyCell('Kewarganegaraan', 'valign:T');
-$tabel->easyCell(":", 'valign:T;'); 
-$tabel->easyCell($id->kewarganegaraan, 'valign:T;'); 
-$tabel->printRow();
-
-$tabel->easyCell("8.", 'align:R;'); 
 $tabel->easyCell('Pendidikan', 'valign:T');
 $tabel->easyCell(":", 'valign:T;'); 
 $tabel->easyCell('', 'valign:T;'); 
 $tabel->printRow();
 
-$tabel->easyCell("9.", 'align:R;'); 
+$tabel->easyCell("8.", 'align:R;'); 
 $tabel->easyCell('Status Pernikahan', 'valign:T');
 $tabel->easyCell(":", 'valign:T;'); 
 $tabel->easyCell($id->statuspernikahan, 'valign:T;'); 
 $tabel->printRow();
 
-$tabel->easyCell("10.", 'align:R;'); 
+$tabel->easyCell("9.", 'align:R;'); 
 $tabel->easyCell('Pekerjaan', 'valign:T');
 $tabel->easyCell(":", 'valign:T;'); 
 $tabel->easyCell($id->pekerjaan, 'valign:T;'); 
 $tabel->printRow();
 
-$tabel->easyCell("11.", 'align:R;'); 
+$tabel->easyCell("10.", 'align:R;'); 
 $tabel->easyCell('Alamat', 'valign:T');
 $tabel->easyCell(":", 'valign:T;'); 
 $tabel->easyCell($id->alamatasal    , 'valign:T;'); 
 $tabel->printRow();
 
-$tabel->easyCell("12.", 'align:R;'); 
+$tabel->easyCell("11.", 'align:R;'); 
 $tabel->easyCell('Pindah Ke', 'valign:T');
 $tabel->easyCell("", 'valign:T;'); 
 $tabel->easyCell('', 'valign:T;'); 
@@ -139,13 +133,13 @@ $tabel->easyCell(":", 'valign:T;');
 $tabel->easyCell($id->alamat_pindah_provinsi, 'valign:T;'); 
 $tabel->printRow();
 
-$tabel->easyCell("13.", 'align:R;'); 
+$tabel->easyCell("12.", 'align:R;'); 
 $tabel->easyCell('Alasan Pindah', 'valign:T');
 $tabel->easyCell(":", 'valign:T;'); 
 $tabel->easyCell('', 'valign:T;'); 
 $tabel->printRow();
 
-$tabel->easyCell("14.", 'align:R;'); 
+$tabel->easyCell("13.", 'align:R;'); 
 $tabel->easyCell('Pengikut', 'valign:T');
 $tabel->easyCell(":", 'valign:T;'); 
 $tabel->easyCell('-', 'valign:T;'); 

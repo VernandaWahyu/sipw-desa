@@ -23,7 +23,7 @@
                         href="{{ Route('surat.pengajuan') }}" aria-expanded="false"><i
                             class="mdi mdi-contact-mail"></i><span class="hide-menu">Pengajuan Surat</span></a>
                 </li>
-                @if (auth()->user()->status == 'KepalaDesa')
+                @if (auth()->user()->status == 'Admin')
                 <li class="sidebar-item @if(Request::is('surat')) selected @endif">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat')) active @endif"
                         href="{{ Route('surat') }}" aria-expanded="false">@if ($total == 0)

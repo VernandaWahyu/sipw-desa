@@ -43,12 +43,23 @@ class SuratController extends Controller
             'jk' => 'required',
             'tempatlahir' => 'required|string',
             'tanggallahir' => 'required',
-            'kewarganegaraan' => 'required',
             'agama' => 'required',
             'pekerjaan' => 'required',
             'statuspernikahan' => 'required',
             'alamat' => 'required',
             'keterangan' => 'required',
+        ],[
+            'name.required'=>'Nama Wajib Diisi',
+            'nik.required'=>'NIK Wajib Diisi',
+            'nik.digits'=>'NIK Maksimal 16 Karakter',
+            'jk.required'=>'Jenis Kelamin Wajib Diisi',
+            'tempatlahir.required'=>'Tempat Lahir Wajib Diisi',
+            'tanggallahir.required'=>'Tanggal Lahir Wajib Diisi',
+            'agama.required'=>'Agama Wajib Diisi',
+            'pekerjaan.required'=>'Pekerjaan Wajib Diisi',
+            'statuspernikahan.required'=>'Status Pernikahan Wajib Diisi',
+            'alamat.required'=>'Alamat Wajib Diisi',
+            'keterangan.required'=>'Keterangan Wajib Diisi'
         ]);
         Auth::user()->suratsktm()->create($data);
         return redirect()->to(Route('home'))->with('success', 'Berhasil Mengajukan Surat');
@@ -71,11 +82,21 @@ class SuratController extends Controller
             'jk' => 'required',
             'tempatlahir' => 'required|string',
             'tanggallahir' => 'required',
-            'kewarganegaraan' => 'required',
             'agama' => 'required',
             'pekerjaan' => 'required',
             'alamat' => 'required',
             'keterangan' => 'required',
+        ],[
+            'name.required'=>'Nama Wajib Diisi',
+            'nik.required'=>'NIK Wajib Diisi',
+            'nik.digits'=>'NIK Maksimal 16 Karakter',
+            'jk.required'=>'Jenis Kelamin Wajib Diisi',
+            'tempatlahir.required'=>'Tempat Lahir Wajib Diisi',
+            'tanggallahir.required'=>'Tanggal Lahir Wajib Diisi',
+            'agama.required'=>'Agama Wajib Diisi',
+            'pekerjaan.required'=>'Pekerjaan Wajib Diisi',
+            'alamat.required'=>'Alamat Wajib Diisi',
+            'keterangan.required'=>'Keterangan Wajib Diisi'
         ]);
         Auth::user()->suratskd()->create($data);
         return redirect()->to(Route('home'))->with('success', 'Berhasil Mengajukan Surat');
@@ -98,7 +119,6 @@ class SuratController extends Controller
             'jk' => 'required',
             'tempatlahir' => 'required|string',
             'tanggallahir' => 'required',
-            'kewarganegaraan' => 'required',
             'agama' => 'required',
             'pekerjaan' => 'required',
             'statuspernikahan' => 'required',
@@ -108,6 +128,22 @@ class SuratController extends Controller
             'alamat_pindah_kabupaten' => 'required',
             'alamat_pindah_provinsi' => 'required',
             // 'keterangan' => 'required',
+        ],[
+            'name.required'=>'Nama Wajib Diisi',
+            'nik.required'=>'NIK Wajib Diisi',
+            'nik.digits'=>'NIK Maksimal 16 Karakter',
+            'jk.required'=>'Jenis Kelamin Wajib Diisi',
+            'tempatlahir.required'=>'Tempat Lahir Wajib Diisi',
+            'tanggallahir.required'=>'Tanggal Lahir Wajib Diisi',
+            'agama.required'=>'Agama Wajib Diisi',
+            'pekerjaan.required'=>'Pekerjaan Wajib Diisi',
+            'statuspernikahan.required'=>'Status Pernikahan Wajib Diisi',
+            'alamatasal.required'=>'Alamat Asal Wajib Diisi',
+            'alamat_pindah_kelurahan.required'=>'Alamat Pindah Kelurahan Wajib Diisi',
+            'alamat_pindah_kecamatan.required'=>'Alamat Pindah Kecamatan Wajib Diisi',
+            'alamat_pindah_kabupaten.required'=>'Alamat Pindah Kabupaten Wajib Diisi',
+            'alamat_pindah_provinsi.required'=>'Alamat Pindah Provinsi Wajib Diisi',
+            // 'keterangan.required'=>'Keterangan Wajib Diisi'
         ]);
         $data = Auth::user()->suratskpp()->create($data);
         return redirect()->to(Route('home'))->with('success', 'Berhasil Mengajukan Surat');
@@ -156,6 +192,15 @@ class SuratController extends Controller
             return view('surat.sktm.skshow', compact('sktm'));
         }
     }
+    public function showsktmsearch(Request $request)
+    {
+        if (auth()->user()->status == 'User') {
+            return Redirect()->to(Route('home'));
+        }else{
+            $sktm = SuratSktm::orderBy('id', 'desc')->where('status', '!=' , 'Diterima')->where('name','LIKE','%'.$request->search.'%')->get();
+            return view('surat.sktm.show', compact('sktm'));
+        }
+    }
     public function sktmshow(SuratSktm $id)
     {
         $data = $id;
@@ -168,20 +213,17 @@ class SuratController extends Controller
     }
     public function storesktmacc(SuratSktm $id, Request $request)
     {
-        $file = $request->file('file')->store('sktm');
         $id->update([
-            'file' => $file,
             'status' => 'Diterima'
         ]);
-        return redirect()->to(Route('surat.sktm'));
+        return redirect()->to(Route('surat.sktm'))->with('success', 'Surat Berhasil DiTerima');
     }
     public function storesktmnacc(SuratSktm $id)
     {
         $id->update([
-            'file' => null,
             'status' => 'Ditolak'
         ]);
-        return redirect()->to(Route('surat.sktm'));
+        return redirect()->to(Route('surat.sktm'))->with('success', 'Surat Berhasil DiTolak');
     }
     // SKD
     public function showskd()
@@ -211,6 +253,15 @@ class SuratController extends Controller
             return view('surat.skd.skshow', compact('skd'));
         }
     }
+    public function showskdsearch(Request $request)
+    {
+        if (auth()->user()->status == 'User') {
+            return Redirect()->to(Route('home'));
+        }else{
+            $skd = SuratSkd::orderBy('id', 'desc')->where('status', '!=' , 'Diterima')->where('name','LIKE','%'.$request->search.'%')->get();
+            return view('surat.skd.show', compact('skd'));
+        }
+    }
     public function skdshow(SuratSkd $id)
     {
         $data = $id;
@@ -223,12 +274,10 @@ class SuratController extends Controller
     }
     public function storeskdacc(SuratSkd $id, Request $request)
     {
-        $file = $request->file('file')->store('skd');
         $id->update([
-            'file' => $file,
             'status' => 'Diterima'
         ]);
-        return redirect()->to(Route('surat.skd'));
+        return redirect()->to(Route('surat.skd'))->with('success', 'Surat Berhasil DiTerima');
     }
     public function storeskdnacc(SuratSkd $id)
     {
@@ -236,7 +285,7 @@ class SuratController extends Controller
             'file' => null,
             'status' => 'Ditolak'
         ]);
-        return redirect()->to(Route('surat.skd'));
+        return redirect()->to(Route('surat.skd'))->with('success', 'Surat Berhasil DiTolak');
     }
     // SKPP
     public function showskpp()
@@ -266,6 +315,15 @@ class SuratController extends Controller
             return view('surat.skpp.skshow', compact('skpp'));
         }
     }
+    public function showskppsearch(Request $request)
+    {
+        if (auth()->user()->status == 'User') {
+            return Redirect()->to(Route('home'));
+        }else{
+            $skpp = SuratSkp::orderBy('id', 'desc')->where('status', '!=' , 'Diterima')->where('name','LIKE','%'.$request->search.'%')->get();
+            return view('surat.skpp.show', compact('skpp'));
+        }
+    }
     public function skppshow(SuratSkp $id)
     {
         $data = $id;
@@ -278,12 +336,12 @@ class SuratController extends Controller
     }
     public function storeskppacc(SuratSkp $id, Request $request)
     {
-        $file = $request->file('file')->store('skpp');
+        // $file = $request->file('file')->store('skpp');
         $id->update([
-            'file' => $file,
+            // 'file' => $file,
             'status' => 'Diterima'
         ]);
-        return redirect()->to(Route('surat.skpp'));
+        return redirect()->to(Route('surat.skpp'))->with('success', 'Surat Berhasil DiTerima');
     }
     public function storeskppnacc(SuratSkp $id)
     {
@@ -291,7 +349,7 @@ class SuratController extends Controller
             'file' => null,
             'status' => 'Ditolak'
         ]);
-        return redirect()->to(Route('surat.skpp'));
+        return redirect()->to(Route('surat.skpp'))->with('success', 'Surat Berhasil DiTolak');
     }
 
     // Surat Keluar

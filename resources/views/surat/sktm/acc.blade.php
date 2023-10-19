@@ -14,22 +14,20 @@
             </div>
         </center>
     </div>
-        <hr>
-    <div class="card-body"> 
+    <div class="card-body">
+        <hr> 
+        <center>
         <div class="d-flex flex-column">
-            <div class="">
                 <a href="{{ Route('cetak.sktm', $data->id) }}" target="_blank"><b>Download / Cetak Surat</b></a>
-            </div>
-            <hr>
             <div>
-                <form method="post" enctype="multipart/form-data" action="{{ Route('sktm.acc', $data->id) }}">
+                <hr>
+                <form method="post" action="{{ Route('sktm.acc', $data->id) }}">
                     @csrf
-                    <div class="form-group">
-                        <input type="file" class="form-control" name="file">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Upload</button>
+                    
+                    <button type="submit" class="btn btn-primary">Setujui</button>
                     <br>
-                    <small>Setelah Upload, Pengajuan secara otomatis telah disetujui</small>
+                    <small>Setelah Klik Setujui, Pengajuan secara otomatis telah disetujui</small>
+                    </center>
                 </form>
             </div>
         </div>

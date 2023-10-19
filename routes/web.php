@@ -28,8 +28,11 @@ Route::middleware(['auth'])->group(function () {
         // Admin Surat
         Route::get('/', [SuratController::class, 'index'])->name('surat');
         Route::get('/sktm', [SuratController::class, 'showsktm'])->name('surat.sktm');
+        Route::post('/sktm', [SuratController::class, 'showsktmsearch']);
         Route::get('/skd', [SuratController::class, 'showskd'])->name('surat.skd');
+        Route::post('/skd', [SuratController::class, 'showskdsearch']);
         Route::get('/skpp', [SuratController::class, 'showskpp'])->name('surat.skpp');
+        Route::post('/skpp', [SuratController::class, 'showskppsearch']);
 
         Route::get('/sk', [SuratController::class, 'indexk'])->name('surat.keluar');
         Route::get('/sk/sktm', [SuratController::class, 'skshowsktm'])->name('surat.keluar.sktm');

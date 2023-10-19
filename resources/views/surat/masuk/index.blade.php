@@ -12,7 +12,6 @@
                     <th scope="col">Nama</th>
                     <th scope="col">NIK</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,12 +32,6 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->nik }}</td>
                     <td>{{ $item->status }}</td>
-                    <td class="d-flex">
-                        <a class="mx-2" href="{{ asset('storage/'.$item->file) }}">
-                            Cetak PDF
-                        </a>
-
-                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -54,7 +47,6 @@
                     <th scope="col">Nama</th>
                     <th scope="col">NIK</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,12 +67,6 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->nik }}</td>
                     <td>{{ $item->status }}</td>
-                    <td class="d-flex">
-                        <a class="mx-2" href="{{ asset('storage/'.$item->file) }}">
-                            Cetak PDF
-                        </a>
-
-                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -95,7 +81,6 @@
                     <th scope="col">Nama</th>
                     <th scope="col">NIK</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -116,13 +101,6 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->nik }}</td>
                     <td>{{ $item->status }}</td>
-                    <td class="d-flex">
-                        <a class="mx-2"
-                            href="{{ asset('storage/'.$item->file) }}">
-                            Cetak PDF
-                        </a>
-
-                    </td>
                 </tr>
                 @endforeach
             </tbody>

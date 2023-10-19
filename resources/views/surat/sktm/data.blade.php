@@ -42,11 +42,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-4">Kewarganegaraan </div>
-                <div class="text-right col-1">:</div>
-                <div class="text-left col-7">{{ $data->kewarganegaraan }}</div>
-            </div>
-            <div class="row">
                 <div class="col-4">Agama </div>
                 <div class="text-right col-1">:</div>
                 <div class="text-left col-7">{{ $data->agama }}</div>
@@ -71,14 +66,14 @@
                 <div class="text-right col-1">:</div>
                 <div class="text-left col-7">{{ $data->keterangan }}</div>
             </div>
-            @if ($data->status == "Diterima")
+            {{-- @if ($data->status == "Diterima")
             <div class="row">
                 <div class="col-4">File Download PDF </div>
                 <div class="text-right col-1">:</div>
                 <a href="{{ asset('storage/'.$data->file) }}" target="_blank"
                     class="text-left col-7"><b>PDF</b></a>
             </div>
-            @endif
+            @endif --}}
         </div>
         <hr>
         @if ($data->status == 'Diterima' || $data->status == 'Ditolak')

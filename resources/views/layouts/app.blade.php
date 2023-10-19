@@ -51,11 +51,6 @@
                 {{ session('status') }}
             </div>
             @endif
-            @if (session('success'))
-            <div class="alert alert-success" role="alert">
-                {{ session('success') }}
-            </div>
-            @endif
             <div class="container-fluid bg-content">
                 @yield('content')
             </div>
@@ -72,4 +67,5 @@
 </body>
 
 </html>
+@include('sweetalert::alert')
 
